@@ -1,0 +1,37 @@
+{
+    "video": "video1.mp4",
+    "incident_summary": {
+        "accident_detected": true,
+        "overall_severity": "Critical",
+        "overall_max_score": 89,
+        "fire_detected": false,
+        "smoke_detected": true,
+        "involved_vehicles": [
+            "car",
+            "bus",
+            "truck"
+        ]
+    },
+    "recommendation": {
+        "response_priority": "P1 - High Priority Emergency Dispatch",
+        "estimated_arrival": "4 - 7 mins",
+        "response_matrix": {
+            "Traffic Police": "CRITICAL",
+            "Ambulance (EMS)": "CRITICAL",
+            "Traffic Control Unit": "HIGH",
+            "Fire & Rescue Department": "HIGH"
+        },
+        "dispatch_services": [
+            "Traffic Police (CRITICAL)",
+            "Ambulance (EMS) (CRITICAL)",
+            "Traffic Control Unit (HIGH)",
+            "Fire & Rescue Department (HIGH)"
+        ],
+        "standard_operating_procedures": [
+            "Immediately dispatch primary EMS and traffic management units to incident coordinates.",
+            "Reroute oncoming traffic to prevent secondary multi-vehicle collisions.",
+            "Activate electronic variable message signs (VMS) warning drivers of low visibility."
+        ],
+        "disclaimer": "AI-generated emergency recommendations are provided for decision support. No external emergency service is contacted automatically."
+    }
+}

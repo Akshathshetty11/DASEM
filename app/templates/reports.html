@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Export Reports - Dynamic Accident Severity Estimation{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Generate Audit & Safety Reports</h1>
+    <p class="page-subtitle">Export comprehensive accident statistics, telemetry metrics, and severity logs in PDF or CSV format.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+    <!-- PDF Export Card -->
+    <div class="content-card">
+        <div class="card-title">
+            <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 0.5rem;"></i> Export PDF Summary Report</span>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Generates a printable PDF audit report containing complete summary analytics, severity breakdown tables, and verified accident events.
+        </p>
+        <button class="btn btn-primary" onclick="generateReport('pdf')">
+            <i class="fa-solid fa-download"></i> Generate PDF Report
+        </button>
+    </div>
+
+    <!-- CSV Export Card -->
+    <div class="content-card">
+        <div class="card-title">
+            <span><i class="fa-solid fa-file-csv" style="color: #10b981; margin-right: 0.5rem;"></i> Export CSV Data Log</span>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Exports raw accident telemetry data (timestamp, frame number, severity score, hazard flags, vehicle counts) into spreadsheet format.
+        </p>
+        <button class="btn btn-secondary" onclick="generateReport('csv')" style="border-color: #10b981; color: #10b981;">
+            <i class="fa-solid fa-file-export"></i> Export CSV Data
+        </button>
+    </div>
+</div>
+
+<!-- Notification Box for Report Download -->
+<div id="report-download-box" class="content-card" style="display: none; background-color: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3);">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h4 style="color: var(--status-confirmed); margin-bottom: 0.25rem;"><i class="fa-solid fa-circle-check"></i> Report Generated Successfully</h4>
+            <span id="txt-report-filename" style="color: var(--text-secondary); font-size: 0.9rem;">report.pdf</span>
+        </div>
+        <a id="btn-download-link" href="#" class="btn btn-primary" style="background-color: var(--status-confirmed);">
+            <i class="fa-solid fa-download"></i> Download Now
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function generateReport(format) {
+        fetch('/api/v1/reports/export', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ format: format })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.download_url) {
+                document.getElementById('report-download-box').style.display = 'block';
+                document.getElementById('txt-report-filename').innerText = data.report.report_name;
+                document.getElementById('btn-download-link').href = data.download_url;
+            }
+        })
+        .catch(err => alert('Failed to generate report: ' + err));
+    }
+</script>
+{% endblock %}

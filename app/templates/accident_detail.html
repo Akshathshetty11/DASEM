@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Accident Event #{{ accident_id }} - Vehicle Telemetry Breakdown{% endblock %}
+
+{% block content %}
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+        <h1 class="page-title">Event Telemetry Details #<span id="txt-acc-id">{{ accident_id }}</span></h1>
+        <p class="page-subtitle">Vehicle classification, telemetry parameters, collision kinetics, and verification controls.</p>
+    </div>
+    <div>
+        <a href="{{ url_for('main.history') }}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to Logs</a>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 3fr 2fr; gap: 1.5rem; margin-bottom: 2rem;">
+    <!-- Left Column: Freeze Snapshot & Vehicles Table -->
+    <div>
+        <div class="content-card" style="padding: 1rem;">
+            <div class="card-title" style="margin-bottom: 0.75rem;">
+                <span>Accident Freeze Frame Snapshot</span>
+            </div>
+            <div style="width: 100%; border-radius: 8px; overflow: hidden; background-color: #000; position: relative;">
+                <img id="img-accident-snapshot" src="" alt="Accident Snapshot" style="width: 100%; height: auto; display: block; min-height: 300px; object-fit: contain;">
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-title">
+                <span>Involved Vehicle Track Telemetry</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Track ID</th>
+                            <th>Vehicle Type</th>
+                            <th>Pre-Impact Speed</th>
+                            <th>Post-Impact Speed</th>
+                            <th>Impact Index</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-accident-vehicles">
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">
+                                Loading telemetry details...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Severity Meter & Verification Controls -->
+    <div>
+        <div class="content-card">
+            <div class="card-title">
+                <span>Dynamic Severity Classification</span>
+            </div>
+            
+            <div style="text-align: center; padding: 1rem 0 1.5rem 0;">
+                <div id="badge-severity-large" class="badge badge-major" style="font-size: 1.2rem; padding: 0.5rem 1.25rem;">
+                    -- Severity
+                </div>
+                <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin: 1rem 0 0.25rem 0;" id="txt-severity-score">
+                    0.0
+                </div>
+                <span style="color: var(--text-muted); font-size: 0.85rem;">Severity Score Index (0 - 100)</span>
+            </div>
+
+            <!-- Multi-Vehicle Count Breakdown -->
+            <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.65rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: var(--text-secondary);">Video Timestamp:</span>
+                    <strong id="txt-acc-timestamp">--</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: var(--text-secondary);">Frame Number:</span>
+                    <strong id="txt-acc-frame">--</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: #0080ff;">Cars Count:</span>
+                    <strong id="txt-acc-cars">0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: #00ff00;">Buses Count:</span>
+                    <strong id="txt-acc-buses">0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: #ff8c00;">Trucks Count:</span>
+                    <strong id="txt-acc-trucks">0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: #ffff00;">Motorcycles Count:</span>
+                    <strong id="txt-acc-bikes">0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: #ef4444;">Fire Detected:</span>
+                    <strong id="txt-acc-fire">--</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span style="color: #94a3b8;">Smoke Detected:</span>
+                    <strong id="txt-acc-smoke">--</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-title">
+                <span>Verification Status</span>
+                <span id="badge-verification-status" class="badge badge-unverified">Unverified</span>
+            </div>
+            
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
+                Audit operator review controls. Confirm valid detections or flag false positives.
+            </p>
+
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-primary" style="flex: 1; background-color: var(--status-confirmed);" onclick="updateVerificationStatus('confirmed')">
+                    <i class="fa-solid fa-check"></i> Confirm Record
+                </button>
+                <button class="btn btn-secondary" style="flex: 1; color: var(--severity-critical);" onclick="updateVerificationStatus('false_positive')">
+                    <i class="fa-solid fa-xmark"></i> False Positive
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const ACCIDENT_ID = {{ accident_id }};
+    document.addEventListener('DOMContentLoaded', () => {
+        loadAccidentDetails(ACCIDENT_ID);
+    });
+</script>
+{% endblock %}

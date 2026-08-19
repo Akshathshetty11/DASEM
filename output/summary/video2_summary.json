@@ -1,0 +1,363 @@
+{
+    "video": "video2.mp4",
+    "video_stem": "video2",
+    "video_path": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\videos\\uploaded\\video2.mp4",
+    "detection_summary": {
+        "total_unique_vehicles": 0,
+        "total_unique_objects": 0,
+        "unique_counts": {
+            "car": 0,
+            "motorcycle": 0,
+            "bus": 0,
+            "truck": 0,
+            "auto_rickshaw": 0,
+            "person": 0,
+            "bicycle": 0
+        },
+        "track_class_map": {},
+        "moving_track_class_map": {}
+    },
+    "accident_summary": {
+        "total_accidents": 2
+    },
+    "severity_summary": {
+        "overall_severity": "Critical",
+        "overall_max_score": 100,
+        "total_events": 2
+    },
+    "hazard_summary": {
+        "fire_detected": true,
+        "fire_confidence": 98.0,
+        "affected_burning_vehicles": [
+            {
+                "track_id": 6,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #6)"
+            },
+            {
+                "track_id": 13,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #13)"
+            },
+            {
+                "track_id": 23,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #23)"
+            },
+            {
+                "track_id": 8,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #8)"
+            },
+            {
+                "track_id": 35,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #35)"
+            },
+            {
+                "track_id": 30,
+                "class": "auto_rickshaw",
+                "description": "Burning Vehicle: Auto_rickshaw (Track #30)"
+            },
+            {
+                "track_id": 37,
+                "class": "auto_rickshaw",
+                "description": "Burning Vehicle: Auto_rickshaw (Track #37)"
+            },
+            {
+                "track_id": 41,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #41)"
+            },
+            {
+                "track_id": 28,
+                "class": "truck",
+                "description": "Burning Vehicle: Truck (Track #28)"
+            },
+            {
+                "track_id": 39,
+                "class": "truck",
+                "description": "Burning Vehicle: Truck (Track #39)"
+            },
+            {
+                "track_id": 47,
+                "class": "truck",
+                "description": "Burning Vehicle: Truck (Track #47)"
+            },
+            {
+                "track_id": 50,
+                "class": "truck",
+                "description": "Burning Vehicle: Truck (Track #50)"
+            },
+            {
+                "track_id": 54,
+                "class": "auto_rickshaw",
+                "description": "Burning Vehicle: Auto_rickshaw (Track #54)"
+            },
+            {
+                "track_id": 46,
+                "class": "auto_rickshaw",
+                "description": "Burning Vehicle: Auto_rickshaw (Track #46)"
+            },
+            {
+                "track_id": 64,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #64)"
+            }
+        ],
+        "smoke_detected": true,
+        "smoke_confidence": 95.0,
+        "affected_smoke_vehicles": [
+            {
+                "track_id": 1,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #1)"
+            },
+            {
+                "track_id": 6,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #6)"
+            },
+            {
+                "track_id": 4,
+                "class": "motorcycle",
+                "description": "Smoke Plume: Motorcycle (Track #4)"
+            },
+            {
+                "track_id": 8,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #8)"
+            },
+            {
+                "track_id": 9,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #9)"
+            },
+            {
+                "track_id": 10,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #10)"
+            },
+            {
+                "track_id": 3,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #3)"
+            },
+            {
+                "track_id": 12,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #12)"
+            },
+            {
+                "track_id": 13,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #13)"
+            },
+            {
+                "track_id": 14,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #14)"
+            },
+            {
+                "track_id": 11,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #11)"
+            },
+            {
+                "track_id": 15,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #15)"
+            },
+            {
+                "track_id": 16,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #16)"
+            },
+            {
+                "track_id": 17,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #17)"
+            },
+            {
+                "track_id": 18,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #18)"
+            },
+            {
+                "track_id": 19,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #19)"
+            },
+            {
+                "track_id": 20,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #20)"
+            },
+            {
+                "track_id": 23,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #23)"
+            },
+            {
+                "track_id": 28,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #28)"
+            },
+            {
+                "track_id": 31,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #31)"
+            },
+            {
+                "track_id": 32,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #32)"
+            },
+            {
+                "track_id": 34,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #34)"
+            },
+            {
+                "track_id": 30,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #30)"
+            },
+            {
+                "track_id": 35,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #35)"
+            },
+            {
+                "track_id": 36,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #36)"
+            },
+            {
+                "track_id": 38,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #38)"
+            },
+            {
+                "track_id": 39,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #39)"
+            },
+            {
+                "track_id": 37,
+                "class": "auto_rickshaw",
+                "description": "Smoke Plume: Auto_rickshaw (Track #37)"
+            },
+            {
+                "track_id": 40,
+                "class": "motorcycle",
+                "description": "Smoke Plume: Motorcycle (Track #40)"
+            },
+            {
+                "track_id": 41,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #41)"
+            },
+            {
+                "track_id": 46,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #46)"
+            },
+            {
+                "track_id": 47,
+                "class": "truck",
+                "description": "Smoke Plume: Truck (Track #47)"
+            },
+            {
+                "track_id": 48,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #48)"
+            },
+            {
+                "track_id": 49,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #49)"
+            },
+            {
+                "track_id": 50,
+                "class": "truck",
+                "description": "Smoke Plume: Truck (Track #50)"
+            },
+            {
+                "track_id": 51,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #51)"
+            },
+            {
+                "track_id": 52,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #52)"
+            },
+            {
+                "track_id": 53,
+                "class": "motorcycle",
+                "description": "Smoke Plume: Motorcycle (Track #53)"
+            },
+            {
+                "track_id": 54,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #54)"
+            },
+            {
+                "track_id": 55,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #55)"
+            },
+            {
+                "track_id": 56,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #56)"
+            },
+            {
+                "track_id": 57,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #57)"
+            },
+            {
+                "track_id": 58,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #58)"
+            },
+            {
+                "track_id": 61,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #61)"
+            },
+            {
+                "track_id": 62,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #62)"
+            },
+            {
+                "track_id": 64,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #64)"
+            }
+        ]
+    },
+    "emergency_summary": {
+        "response_priority": "P1 - Critical Urgent Dispatch",
+        "dispatch_services": [
+            "Traffic Police (CRITICAL)",
+            "Ambulance (EMS) (CRITICAL)",
+            "Traffic Control Unit (HIGH)",
+            "Fire & Rescue Department (CRITICAL)"
+        ]
+    },
+    "generated_files": {
+        "detection_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\detections\\video2.json",
+        "detected_video": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\detected\\video2_detected.mp4",
+        "accident_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\accidents\\video2_accident.json",
+        "severity_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\severity\\video2_severity.json",
+        "fire_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\fire\\video2_fire.json",
+        "fire_video": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\fire\\video2_fire.mp4",
+        "smoke_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\smoke\\video2_smoke.json",
+        "smoke_video": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\smoke\\video2_smoke.mp4",
+        "recommendation_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\recommendations\\video2_recommendation.json"
+    }
+}

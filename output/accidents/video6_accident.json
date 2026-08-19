@@ -1,0 +1,34 @@
+{
+    "video": "video6.mp4",
+    "total_accidents": 1,
+    "accidents": [
+        {
+            "start_time": 7.42,
+            "end_time": 11.88,
+            "duration_seconds": 4.5,
+            "accident": true,
+            "score": 65,
+            "confidence": "Moderate",
+            "vehicles": [
+                "car",
+                "car",
+                "car"
+            ],
+            "vehicle_ids": [
+                24,
+                27,
+                29
+            ],
+            "distance": 10.5,
+            "iou": 0.3,
+            "bbox_change": 0.75,
+            "reason": [
+                "Abnormal deceleration and post-event stationary posture",
+                "Temporal anomaly confirmation",
+                "High vehicle proximity",
+                "Significant bounding-box change",
+                "Temporal confirmation"
+            ]
+        }
+    ]
+}

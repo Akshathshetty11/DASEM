@@ -1,0 +1,29 @@
+{
+    "video": "video4.mp4",
+    "overall_severity": "Critical",
+    "overall_max_score": 80,
+    "total_events": 1,
+    "events": [
+        {
+            "accident_id": 1,
+            "start_time": 0.9,
+            "end_time": 1.1,
+            "duration_seconds": 0.5,
+            "severity_score": 80,
+            "severity_level": "Critical",
+            "participating_vehicles": [
+                "car"
+            ],
+            "participating_vehicle_ids": [
+                5
+            ],
+            "fire_involved": true,
+            "smoke_involved": true,
+            "impact_metrics": {
+                "distance": 64.9,
+                "iou": 0.0,
+                "bbox_change": 0.69
+            }
+        }
+    ]
+}

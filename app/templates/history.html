@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Accident History - Dynamic Accident Severity Estimation{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Accident Detection Logs</h1>
+    <p class="page-subtitle">Filter, inspect, and verify all automated accident detections across analyzed video archives.</p>
+</div>
+
+<!-- Filters Bar -->
+<div class="content-card" style="padding: 1rem 1.5rem; margin-bottom: 1.5rem;">
+    <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+        <div>
+            <label style="color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 0.35rem;">Filter by Severity</label>
+            <select id="filter-severity" class="btn btn-secondary" onchange="loadAccidentHistory()" style="background-color: var(--bg-main);">
+                <option value="all">All Severities</option>
+                <option value="Minor">Minor (< 40)</option>
+                <option value="Major">Major (40 - 74)</option>
+                <option value="Critical">Critical (≥ 75)</option>
+            </select>
+        </div>
+
+        <div>
+            <label style="color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 0.35rem;">Filter by Verification Status</label>
+            <select id="filter-status" class="btn btn-secondary" onchange="loadAccidentHistory()" style="background-color: var(--bg-main);">
+                <option value="all">All Statuses</option>
+                <option value="unverified">Unverified</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="false_positive">False Positive</option>
+            </select>
+        </div>
+
+        <div style="margin-left: auto;">
+            <button class="btn btn-primary" onclick="loadAccidentHistory()"><i class="fa-solid fa-rotate-right"></i> Refresh Table</button>
+        </div>
+    </div>
+</div>
+
+<!-- History Table Card -->
+<div class="content-card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>Video ID</th>
+                    <th>Timestamp</th>
+                    <th>Severity Level</th>
+                    <th>Severity Score</th>
+                    <th>Involved Vehicles</th>
+                    <th>Hazards</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbl-accident-history">
+                <tr>
+                    <td colspan="9" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                        Loading accident history logs...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadAccidentHistory();
+    });
+</script>
+{% endblock %}

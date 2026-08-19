@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dynamic Accident Severity Estimation Model{% endblock %}</title>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    
+    <!-- FontAwesome / Feather Icons & Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <a href="{{ url_for('main.dashboard') }}" class="brand">
+            <i class="fa-solid fa-car-burst" style="color: #ef4444;"></i>
+            <span>AccidentVision</span>
+            <span class="brand-badge">AI Core</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="{{ url_for('main.dashboard') }}" class="nav-link {% if request.endpoint == 'main.dashboard' %}active{% endif %}"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="{{ url_for('main.video_analysis') }}" class="nav-link {% if request.endpoint == 'main.video_analysis' %}active{% endif %}"><i class="fa-solid fa-video"></i> Video Analysis</a></li>
+            <li><a href="{{ url_for('main.history') }}" class="nav-link {% if request.endpoint == 'main.history' %}active{% endif %}"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+            <li><a href="{{ url_for('main.reports') }}" class="nav-link {% if request.endpoint == 'main.reports' %}active{% endif %}"><i class="fa-solid fa-file-invoice"></i> Reports</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container Content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dynamic Accident Severity Estimation Model &bull; Final Year Engineering Project</p>
+    </footer>
+
+    <!-- Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

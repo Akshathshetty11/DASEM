@@ -1,0 +1,35 @@
+# Python & Virtualenv
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads & Output Assets
+app/static/uploads/raw/*
+!app/static/uploads/raw/.gitkeep
+app/static/uploads/processed/*
+!app/static/uploads/processed/.gitkeep
+app/static/uploads/clips/*
+!app/static/uploads/clips/.gitkeep
+app/static/uploads/snapshots/*
+!app/static/uploads/snapshots/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# ML Model Weights (large files)
+ml_engine/weights/*.pt
+ml_engine/weights/*.onnx
+ml_engine/weights/*.engine
+
+# IDE & System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

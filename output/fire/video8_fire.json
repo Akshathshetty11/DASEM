@@ -1,0 +1,10 @@
+{
+    "video": "video8.mp4",
+    "fire_detected": false,
+    "fire_confidence": 0.0,
+    "max_flame_area_percentage": 0.0,
+    "total_fire_frames": 0,
+    "fire_events_count": 0,
+    "affected_vehicles": [],
+    "fire_intervals": []
+}

@@ -1,0 +1,33 @@
+{
+    "video": "video8.mp4",
+    "incident_summary": {
+        "accident_detected": true,
+        "overall_severity": "Moderate",
+        "overall_max_score": 55,
+        "fire_detected": false,
+        "smoke_detected": true,
+        "involved_vehicles": [
+            "car"
+        ]
+    },
+    "recommendation": {
+        "response_priority": "P2 - Priority Response Dispatch",
+        "estimated_arrival": "8 - 12 mins",
+        "response_matrix": {
+            "Traffic Police": "HIGH",
+            "Ambulance (EMS)": "HIGH",
+            "Traffic Control Unit": "HIGH",
+            "Fire & Rescue Department": "HIGH"
+        },
+        "dispatch_services": [
+            "Traffic Police (HIGH)",
+            "Ambulance (EMS) (HIGH)",
+            "Traffic Control Unit (HIGH)",
+            "Fire & Rescue Department (HIGH)"
+        ],
+        "standard_operating_procedures": [
+            "Activate electronic variable message signs (VMS) warning drivers of low visibility."
+        ],
+        "disclaimer": "AI-generated emergency recommendations are provided for decision support. No external emergency service is contacted automatically."
+    }
+}

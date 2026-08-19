@@ -1,0 +1,31 @@
+{
+    "video": "video8.mp4",
+    "total_accidents": 1,
+    "accidents": [
+        {
+            "start_time": 1.13,
+            "end_time": 5.44,
+            "duration_seconds": 4.3,
+            "accident": true,
+            "score": 40,
+            "confidence": "Moderate",
+            "vehicles": [
+                "car",
+                "car",
+                "car"
+            ],
+            "vehicle_ids": [
+                2,
+                5,
+                6
+            ],
+            "distance": 120.7,
+            "iou": 0.0,
+            "bbox_change": 1.08,
+            "reason": [
+                "Abnormal deceleration and post-event stationary posture",
+                "Temporal anomaly confirmation"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "video": "video4.mp4",
+    "video_stem": "video4",
+    "video_path": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\videos\\uploaded\\video4.mp4",
+    "detection_summary": {
+        "total_unique_vehicles": 0,
+        "total_unique_objects": 0,
+        "unique_counts": {
+            "car": 0,
+            "motorcycle": 0,
+            "bus": 0,
+            "truck": 0,
+            "auto_rickshaw": 0,
+            "person": 0,
+            "bicycle": 0
+        },
+        "track_class_map": {
+            "10": "auto_rickshaw",
+            "11": "person"
+        },
+        "moving_track_class_map": {}
+    },
+    "accident_summary": {
+        "total_accidents": 1
+    },
+    "severity_summary": {
+        "overall_severity": "Critical",
+        "overall_max_score": 80,
+        "total_events": 1
+    },
+    "hazard_summary": {
+        "fire_detected": true,
+        "fire_confidence": 98.0,
+        "affected_burning_vehicles": [
+            {
+                "track_id": 1,
+                "class": "truck",
+                "description": "Burning Vehicle: Truck (Track #1)"
+            },
+            {
+                "track_id": 5,
+                "class": "motorcycle",
+                "description": "Burning Vehicle: Motorcycle (Track #5)"
+            },
+            {
+                "track_id": 6,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #6)"
+            },
+            {
+                "track_id": 7,
+                "class": "car",
+                "description": "Burning Vehicle: Car (Track #7)"
+            },
+            {
+                "track_id": 10,
+                "class": "auto_rickshaw",
+                "description": "Burning Vehicle: Auto_rickshaw (Track #10)"
+            }
+        ],
+        "smoke_detected": true,
+        "smoke_confidence": 95.0,
+        "affected_smoke_vehicles": [
+            {
+                "track_id": 1,
+                "class": "truck",
+                "description": "Smoke Plume: Truck (Track #1)"
+            },
+            {
+                "track_id": 2,
+                "class": "motorcycle",
+                "description": "Smoke Plume: Motorcycle (Track #2)"
+            },
+            {
+                "track_id": 3,
+                "class": "motorcycle",
+                "description": "Smoke Plume: Motorcycle (Track #3)"
+            },
+            {
+                "track_id": 5,
+                "class": "bicycle",
+                "description": "Smoke Plume: Bicycle (Track #5)"
+            },
+            {
+                "track_id": 6,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #6)"
+            },
+            {
+                "track_id": 7,
+                "class": "car",
+                "description": "Smoke Plume: Car (Track #7)"
+            },
+            {
+                "track_id": 9,
+                "class": "truck",
+                "description": "Smoke Plume: Truck (Track #9)"
+            },
+            {
+                "track_id": 10,
+                "class": "auto_rickshaw",
+                "description": "Smoke Plume: Auto_rickshaw (Track #10)"
+            }
+        ]
+    },
+    "emergency_summary": {
+        "response_priority": "P1 - Critical Urgent Dispatch",
+        "dispatch_services": [
+            "Traffic Police (CRITICAL)",
+            "Ambulance (EMS) (CRITICAL)",
+            "Traffic Control Unit (HIGH)",
+            "Fire & Rescue Department (CRITICAL)"
+        ]
+    },
+    "generated_files": {
+        "detection_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\detections\\video4.json",
+        "detected_video": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\detected\\video4_detected.mp4",
+        "accident_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\accidents\\video4_accident.json",
+        "severity_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\severity\\video4_severity.json",
+        "fire_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\fire\\video4_fire.json",
+        "fire_video": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\fire\\video4_fire.mp4",
+        "smoke_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\smoke\\video4_smoke.json",
+        "smoke_video": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\smoke\\video4_smoke.mp4",
+        "recommendation_json": "C:\\Users\\HP\\OneDrive\\Desktop\\Dynamic-Accident-Severity-Estimation-Model\\output\\recommendations\\video4_recommendation.json"
+    }
+}

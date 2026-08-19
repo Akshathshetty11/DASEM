@@ -1,0 +1,19 @@
+{
+    "video": "video3.mp4",
+    "overall_severity": "Severe",
+    "fire_detected": false,
+    "smoke_detected": true,
+    "recommended_response": [
+        "IMMEDIATE EMERGENCY RESPONSE REQUIRED",
+        "Dispatch Traffic Police units for immediate perimeter lockdown",
+        "Dispatch Medical Ambulances with priority trauma equipment",
+        "Fire verification required - Smoke detected near collision zone"
+    ],
+    "recommended_services": [
+        "Police",
+        "Ambulance",
+        "Traffic Control",
+        "Fire Inspection Unit"
+    ],
+    "disclaimer": "This is an automated AI decision-support recommendation only. No external emergency service has been contacted automatically."
+}

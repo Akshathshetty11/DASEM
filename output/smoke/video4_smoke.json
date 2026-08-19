@@ -1,0 +1,94 @@
+{
+    "video": "video4.mp4",
+    "smoke_detected": true,
+    "smoke_confidence": 95.0,
+    "max_smoke_area_percentage": 48.184,
+    "total_smoke_frames": 300,
+    "smoke_events_count": 1,
+    "affected_vehicles": [
+        {
+            "track_id": 1,
+            "class": "truck",
+            "description": "Smoke Plume: Truck (Track #1)"
+        },
+        {
+            "track_id": 2,
+            "class": "motorcycle",
+            "description": "Smoke Plume: Motorcycle (Track #2)"
+        },
+        {
+            "track_id": 3,
+            "class": "motorcycle",
+            "description": "Smoke Plume: Motorcycle (Track #3)"
+        },
+        {
+            "track_id": 5,
+            "class": "bicycle",
+            "description": "Smoke Plume: Bicycle (Track #5)"
+        },
+        {
+            "track_id": 6,
+            "class": "car",
+            "description": "Smoke Plume: Car (Track #6)"
+        },
+        {
+            "track_id": 7,
+            "class": "car",
+            "description": "Smoke Plume: Car (Track #7)"
+        },
+        {
+            "track_id": 9,
+            "class": "truck",
+            "description": "Smoke Plume: Truck (Track #9)"
+        },
+        {
+            "track_id": 10,
+            "class": "auto_rickshaw",
+            "description": "Smoke Plume: Auto_rickshaw (Track #10)"
+        }
+    ],
+    "smoke_intervals": [
+        {
+            "start_time": 0.07,
+            "start_frame": 2,
+            "max_pct": 48.184,
+            "linked_vehicles": [
+                {
+                    "track_id": 1,
+                    "class": "truck"
+                },
+                {
+                    "track_id": 2,
+                    "class": "motorcycle"
+                },
+                {
+                    "track_id": 3,
+                    "class": "motorcycle"
+                },
+                {
+                    "track_id": 5,
+                    "class": "bicycle"
+                },
+                {
+                    "track_id": 6,
+                    "class": "car"
+                },
+                {
+                    "track_id": 7,
+                    "class": "car"
+                },
+                {
+                    "track_id": 9,
+                    "class": "truck"
+                },
+                {
+                    "track_id": 10,
+                    "class": "auto_rickshaw"
+                }
+            ],
+            "end_time": 10.03,
+            "end_frame": 301,
+            "duration_seconds": 10.0
+        }
+    ]
+}

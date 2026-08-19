@@ -1,0 +1,27 @@
+{
+    "video": "video3.mp4",
+    "incident_summary": {
+        "accident_detected": false,
+        "overall_severity": "None",
+        "overall_max_score": 0,
+        "fire_detected": true,
+        "smoke_detected": true,
+        "involved_vehicles": []
+    },
+    "recommendation": {
+        "response_priority": "P2 - Priority Response Dispatch",
+        "estimated_arrival": "8 - 12 mins",
+        "response_matrix": {
+            "Traffic Police": "LOW",
+            "Ambulance (EMS)": "STANDBY",
+            "Traffic Control Unit": "NORMAL",
+            "Fire & Rescue Department": "STANDBY"
+        },
+        "dispatch_services": [],
+        "standard_operating_procedures": [
+            "Deploy HAZMAT fire suppression units. Maintain 50m safety perimeter.",
+            "Activate electronic variable message signs (VMS) warning drivers of low visibility."
+        ],
+        "disclaimer": "AI-generated emergency recommendations are provided for decision support. No external emergency service is contacted automatically."
+    }
+}

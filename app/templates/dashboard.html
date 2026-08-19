@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Vehicle Traffic & Crash Severity Telemetry{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Vehicle Telemetry & Crash Severity Overview</h1>
+    <p class="page-subtitle">AI-powered vehicle classification (Cars, Buses, Trucks, Motorcycles), fire/smoke hazards, and collision severity telemetry.</p>
+</div>
+
+<!-- Primary Vehicle Metrics Grid -->
+<div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
+    <div class="metric-card">
+        <div class="metric-header">
+            <span>Total Cars</span>
+            <i class="fa-solid fa-car" style="color: #0080ff;"></i>
+        </div>
+        <div class="metric-value" id="val-total-cars">0</div>
+        <div class="metric-sub">Blue Bounding Box</div>
+    </div>
+    
+    <div class="metric-card">
+        <div class="metric-header">
+            <span>Total Buses</span>
+            <i class="fa-solid fa-bus" style="color: #00ff00;"></i>
+        </div>
+        <div class="metric-value" id="val-total-buses">0</div>
+        <div class="metric-sub">Green Bounding Box</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-header">
+            <span>Total Trucks</span>
+            <i class="fa-solid fa-truck" style="color: #ff8c00;"></i>
+        </div>
+        <div class="metric-value" id="val-total-trucks">0</div>
+        <div class="metric-sub">Orange Bounding Box</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-header">
+            <span>Total Motorcycles</span>
+            <i class="fa-solid fa-motorcycle" style="color: #ffff00;"></i>
+        </div>
+        <div class="metric-value" id="val-total-bikes">0</div>
+        <div class="metric-sub">Yellow Bounding Box</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-header">
+            <span>Critical Crashes</span>
+            <i class="fa-solid fa-triangle-exclamation" style="color: var(--severity-critical);"></i>
+        </div>
+        <div class="metric-value" id="val-critical-accidents" style="color: var(--severity-critical);">0</div>
+        <div class="metric-sub">High kinetic score (≥ 75)</div>
+    </div>
+</div>
+
+<!-- Charts Section -->
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+    <div class="content-card" style="margin-bottom: 0;">
+        <div class="card-title">
+            <span>Vehicle Classification Distribution</span>
+        </div>
+        <div style="height: 280px; position: relative;">
+            <canvas id="chart-object-distribution"></canvas>
+        </div>
+    </div>
+    
+    <div class="content-card" style="margin-bottom: 0;">
+        <div class="card-title">
+            <span>Accident Severity Distribution</span>
+        </div>
+        <div style="height: 280px; position: relative;">
+            <canvas id="chart-severity-breakdown"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Incident Feed Table -->
+<div class="content-card">
+    <div class="card-title">
+        <span>Recent Vehicle Crashes & Hazard Telemetry</span>
+        <a href="{{ url_for('main.history') }}" class="btn btn-secondary btn-sm">View All History</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Severity Level</th>
+                    <th>Severity Score</th>
+                    <th>Vehicle Telemetry</th>
+                    <th>Fire / Smoke</th>
+                    <th>Verification</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbl-recent-accidents">
+                <tr>
+                    <td colspan="8" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                        Loading recent vehicle crash telemetry records...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadDashboardMetrics();
+    });
+</script>
+{% endblock %}
