@@ -21,7 +21,7 @@ else:
     if json_path.exists():
         data = load_json(json_path)
         total_unique = data.get("total_unique_objects", 0)
-        counts = data.get("unique_object_counts", {})
+        counts = data.get("unique_object_counts", data.get("unique_counts", {}))
 
         st.subheader("Unique Tracked Objects")
         st.info("Counts represent unique physical objects tracked over the entire video duration (counted once per track ID).")

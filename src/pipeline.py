@@ -25,7 +25,7 @@ def run_pipeline(video_path=None):
     """
     Complete Sequential DASEM AI Computer Vision Pipeline & Centralized Single Source of Truth Builder.
     Dynamically processes ONLY the uploaded video file.
-    Runs Module 1 (Detection & Tracking) -> Module 3 (Accident) -> Module 5 (Fire) -> Module 6 (Smoke) -> Module 4 (Severity) -> Module 7 (Emergency).
+    Runs Module 1 (Detection & Tracking) -> Module 5 (Fire) -> Module 6 (Smoke) -> Module 3 (Accident) -> Module 4 (Severity) -> Module 7 (Emergency).
     Saves aggregated master single-source-of-truth output to output/summary/<video_stem>_summary.json.
     """
     if not video_path:
@@ -47,25 +47,25 @@ def run_pipeline(video_path=None):
     logger.info(f"STARTING DASEM SEQUENTIAL AI PIPELINE FOR: {video_name}")
     logger.info(f"============================================================")
 
-    # Step 1: Multi-Class YOLOv8 Detection & ByteTrack Persistent Tracking (Moving Vehicles Only)
+    # Step 1: Multi-Class YOLOv8 Detection & ByteTrack Persistent Tracking
     logger.info("\n--- STEP 1: Object Detection & Persistent Tracking ---")
     det_res = detect_vehicles(str(input_path))
     det_json_path = det_res["json_path"]
 
-    # Step 2: Accident Detection Engine
-    logger.info("\n--- STEP 2: Accident Candidate Evaluation ---")
-    acc_res = detect_accidents_from_json(det_json_path)
-    acc_json_path = acc_res["json_path"]
+    # Step 2: Smoke Detection Engine (Anti-False-Positive Motion Verified)
+    logger.info("\n--- STEP 2: Smoke Detection & Spatial Vehicle Linking ---")
+    smoke_res = detect_smoke(str(input_path), det_json_path)
+    smoke_json_path = smoke_res["json_path"]
 
     # Step 3: Fire Detection Engine (Anti-False-Positive Texture & Flicker Verified)
     logger.info("\n--- STEP 3: Fire Detection & Spatial Vehicle Linking ---")
-    fire_res = detect_fire(str(input_path), det_json_path)
+    fire_res = detect_fire(str(input_path), det_json_path, smoke_json_path)
     fire_json_path = fire_res["json_path"]
 
-    # Step 4: Smoke Detection Engine (Anti-False-Positive Motion Verified)
-    logger.info("\n--- STEP 4: Smoke Detection & Spatial Vehicle Linking ---")
-    smoke_res = detect_smoke(str(input_path), det_json_path)
-    smoke_json_path = smoke_res["json_path"]
+    # Step 4: Accident Detection Engine (Single & Multi-Vehicle Accidents)
+    logger.info("\n--- STEP 4: Accident Candidate Evaluation ---")
+    acc_res = detect_accidents_from_json(det_json_path, fire_json_path, smoke_json_path)
+    acc_json_path = acc_res["json_path"]
 
     # Step 5: Severity Score Classification (Minor, Major, Critical)
     logger.info("\n--- STEP 5: Calibrated Severity Score Classification ---")

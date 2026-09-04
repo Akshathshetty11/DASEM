@@ -33,3 +33,10 @@ ml_engine/weights/*.engine
 .idea/
 .DS_Store
 Thumbs.db
+
+
+# Generated project outputs
+output/
+
+# Uploaded/test videos
+videos/uploaded/

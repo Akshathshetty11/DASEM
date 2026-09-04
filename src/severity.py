@@ -17,7 +17,7 @@ def classify_severity_from_json(accident_json_path, fire_json_path=None, smoke_j
     """
     Process accident JSON, fire JSON, and smoke JSON to estimate dynamic accident severity scores (0-100).
     Categorizes events dynamically into: Mild (0-39), Moderate (40-64), Severe (65-84), Critical (85-100).
-    Deduplicates participant vehicle listings.
+    Links Fire/Smoke hazards to accident events.
     Saves output to output/severity/<video_stem>_severity.json.
     """
     acc_path = validate_file_path(accident_json_path, extension=".json")
@@ -31,9 +31,10 @@ def classify_severity_from_json(accident_json_path, fire_json_path=None, smoke_j
     smoke_data = load_json(smoke_json_path) if smoke_json_path and Path(smoke_json_path).exists() else {}
 
     fire_detected = fire_data.get("fire_detected", False)
-    fire_confidence = fire_data.get("fire_confidence", 0.0)
     smoke_detected = smoke_data.get("smoke_detected", False)
-    smoke_confidence = smoke_data.get("smoke_confidence", 0.0)
+
+    fire_vehicles = {v.get("track_id") for v in fire_data.get("affected_vehicles", []) if v.get("track_id") is not None}
+    smoke_vehicles = {v.get("track_id") for v in smoke_data.get("affected_vehicles", []) if v.get("track_id") is not None}
 
     logger.info(f"DASEM Module 4 - Accident Severity Estimation Engine")
     logger.info(f"Input Accident JSON: {acc_path.name} ({len(accidents)} events to evaluate)")
@@ -63,25 +64,33 @@ def classify_severity_from_json(accident_json_path, fire_json_path=None, smoke_j
 
     for idx, acc in enumerate(accidents, 1):
         base_score = float(acc.get("score", 40.0))
-        vehicles = acc.get("vehicles", ["motorcycle"])
-        vehicle_ids = acc.get("vehicle_ids", [])
+        vehicles = acc.get("vehicles", ["car"])
+        vehicle_ids = set(acc.get("vehicle_ids", []))
         
         # Deduplicate vehicle list
-        unique_vehicles = list(dict.fromkeys(vehicles))
+        unique_vehicles = list(dict.fromkeys([v.capitalize() for v in vehicles]))
 
-        # Additional Multi-Factor Weighting
+        # Hazard Association Check (Is fire/smoke attached to an accident event?)
+        is_accident_fire = fire_detected and (bool(vehicle_ids.intersection(fire_vehicles)) or not fire_vehicles or acc.get("event_type") == "fire_incident")
+        is_accident_smoke = smoke_detected and (bool(vehicle_ids.intersection(smoke_vehicles)) or not smoke_vehicles)
+
         hazard_bonus = 0.0
-        if fire_detected:
+        if is_accident_fire:
             hazard_bonus += 35.0
-        elif smoke_detected:
+        elif is_accident_smoke:
             hazard_bonus += 15.0
 
+        # Multi-vehicle interaction factor
         vehicle_count_factor = min(15.0, max(0.0, (len(unique_vehicles) - 1) * 10.0))
         
-        total_score = min(100, int(base_score + hazard_bonus + vehicle_count_factor))
+        # Heavy transport collision momentum bonus (Bus / Truck involvement in a collision)
+        has_heavy_transport = any(v.lower() in ['bus', 'truck'] for v in unique_vehicles)
+        heavy_transport_factor = 15.0 if (has_heavy_transport and len(unique_vehicles) >= 2) else 0.0
 
-        # Dynamic Severity Level Mapping (Dynamic Evidence-Based)
-        if total_score >= 85 or fire_detected:
+        total_score = min(100, int(base_score + hazard_bonus + vehicle_count_factor + heavy_transport_factor))
+
+        # Dynamic Severity Level Mapping
+        if total_score >= 85 or is_accident_fire:
             sev_level = "Critical"
         elif total_score >= 65:
             sev_level = "Severe"
@@ -102,9 +111,9 @@ def classify_severity_from_json(accident_json_path, fire_json_path=None, smoke_j
             "severity_score": total_score,
             "severity_level": sev_level,
             "participating_vehicles": unique_vehicles,
-            "participating_vehicle_ids": vehicle_ids,
-            "fire_involved": fire_detected,
-            "smoke_involved": smoke_detected,
+            "participating_vehicle_ids": list(vehicle_ids),
+            "fire_involved": is_accident_fire,
+            "smoke_involved": is_accident_smoke,
             "impact_metrics": {
                 "distance": acc.get("distance", 0.0),
                 "iou": acc.get("iou", 0.0),
@@ -138,8 +147,8 @@ def classify_severity_from_json(accident_json_path, fire_json_path=None, smoke_j
     }
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="DASEM Module 4 - Accident Severity Classification Engine")
-    parser.add_argument("accident_json", help="Path to accident JSON file")
+    parser = argparse.ArgumentParser(description="DASEM Module 4 - Accident Severity Estimation Engine")
+    parser.add_argument("accident_json", nargs="?", default=None, help="Path to accident JSON file")
     parser.add_argument("--fire_json", default=None, help="Path to fire JSON file")
     parser.add_argument("--smoke_json", default=None, help="Path to smoke JSON file")
     args = parser.parse_args()
